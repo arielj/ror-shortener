@@ -5,6 +5,8 @@ class ShortenedUrl < ApplicationRecord
 
   scope :top, -> { order(views_counter: :desc).limit(100) }
 
+  after_create :enqueue_title_job
+
   def self.for_url(url)
     find_by(original_url: url) or create(original_url: url)
   end
@@ -23,6 +25,10 @@ class ShortenedUrl < ApplicationRecord
   end
 
 private
+  def enqueue_title_job
+    FetchUrlTitleJob.perform_later(id)
+  end
+
   def self.num_to_base62(num)
     return '' if num.nil?
 

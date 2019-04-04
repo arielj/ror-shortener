@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_222003) do
+ActiveRecord::Schema.define(version: 2019_04_04_032715) do
 
   create_table "shortened_urls", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "original_url"
     t.integer "views_counter", default: 0
+    t.text "title"
     t.index ["original_url"], name: "index_shortened_urls_on_original_url", length: 1000
     t.index ["views_counter"], name: "index_shortened_urls_on_views_counter"
   end
