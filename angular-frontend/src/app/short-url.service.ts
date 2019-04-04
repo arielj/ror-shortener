@@ -14,4 +14,5 @@ export class ShortUrlService {
   getUrls(): Observable<ShortenedUrl[]> {
     return this.http.get<ShortenedUrl[]>('http://localhost:3000/top.json');
   }
+
 }

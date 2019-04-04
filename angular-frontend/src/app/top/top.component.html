@@ -3,11 +3,13 @@
   <thead>
     <tr>
       <th>Url</th>
+      <th>Title</th>
       <th>Counter</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let url of urls">>
+    <tr *ngFor="let url of urls">
+      <td>{{ url.original_url }}</td>
       <td>{{ url.title }}</td>
       <td>{{ url.views_counter }}</td>
     </tr>
