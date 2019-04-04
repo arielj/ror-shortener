@@ -15,13 +15,12 @@ class ShortenedUrl < ApplicationRecord
     find(decode_key(encoded))
   end
 
-
   def self.decode_key(encoded)
     base62_to_num(encoded)
   end
 
   def encoded_key
-    self.class.num_to_base62_padded(id)
+    self.class.num_to_base62(id)
   end
 
 private
@@ -35,13 +34,6 @@ private
     _next = (num / 62).floor unless num < 62
 
     "#{num_to_base62(_next)}#{BASE_62_DIGITS[num % 62]}"
-  end
-
-  def self.num_to_base62_padded(num, pad = 7)
-    raise 'Invalid padding' if num > (62**7-1)
-
-    encoded = num_to_base62(num)
-    "0"*(7-encoded.length)+encoded
   end
 
   def self.base62_to_num(encoded)
