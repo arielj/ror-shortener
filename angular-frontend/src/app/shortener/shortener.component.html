@@ -7,3 +7,6 @@
   The shortened url is:
   <a [href]='shortenedUrl'>{{ shortenedUrl }}</a>
 </p>
+<p class='error' *ngIf="hasErrors()">
+  <span *ngFor='let error of shortenerErrors'>{{ error }}</span>
+</p>

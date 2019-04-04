@@ -9,15 +9,27 @@ import { ShortUrlService } from '../short-url.service';
 export class ShortenerComponent implements OnInit {
 
   urlInput : string = '';
-  shortenedKey : string = '';
+  shortenedUrl : string = '';
+  shortenerErrors : string[] = [];
 
   constructor(private shortUrlService: ShortUrlService) { }
 
   ngOnInit() {
   }
 
-  shorten() {
-    this.shortUrlService.shorten(this.urlInput).subscribe(resp => this.shortenedUrl = resp.url);
+  hasErrors() {
+    return this.shortenerErrors.length > 0;
   }
 
+  shorten() {
+    this.shortUrlService.shorten(this.urlInput).subscribe(resp => {
+      if (resp.url) {
+        this.shortenerErrors = [];
+        this.shortenedUrl = resp.url;
+      } else {
+        this.shortenedUrl = '';
+        this.shortenerErrors = resp.errors;
+      }
+    });
+  }
 }

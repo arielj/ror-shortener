@@ -8,8 +8,6 @@ import { ShortUrlService } from '../short-url.service';
   styleUrls: ['./top.component.sass']
 })
 export class TopComponent implements OnInit {
-  urls = SHORTENED_URLS;
-
   constructor(private shortUrlService: ShortUrlService) { }
 
   ngOnInit() {

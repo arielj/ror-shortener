@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    errors:
+      models:
+        shortened_url:
+          attributes:
+            original_url:
+              blank: Url can't be blank.
