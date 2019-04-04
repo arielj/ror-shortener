@@ -1,0 +1,15 @@
+<h2>TOP 100</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Counter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let url of urls">>
+      <td>{{ url.title }}</td>
+      <td>{{ url.views_counter }}</td>
+    </tr>
+  </tbody>
+</table>
