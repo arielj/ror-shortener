@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   post :url, to: 'shortener#shorten'
 
-  get ":encoded", to: 'expander#expand'
+  get ":encoded", to: 'expander#expand', as: :shortened
 end

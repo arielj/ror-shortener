@@ -15,4 +15,7 @@ export class ShortUrlService {
     return this.http.get<ShortenedUrl[]>('http://localhost:3000/top.json');
   }
 
+  shorten(longUrl) {
+    return this.http.post('http://localhost:3000/url.json', {url: longUrl});
+  }
 }

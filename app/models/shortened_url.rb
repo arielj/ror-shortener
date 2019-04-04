@@ -2,7 +2,7 @@ class ShortenedUrl < ApplicationRecord
   BASE_62_DIGITS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
   validates :original_url, presence: true, uniqueness: true,
-    format: {with: /\Ahttps?:\/\/\w+\z/,
+    format: {with: /\Ahttps?:\/\/\S+\z/,
       message: 'Be sure to include the protocol and remove white spaces if any'}
 
   scope :top, -> { order(views_counter: :desc).limit(100) }

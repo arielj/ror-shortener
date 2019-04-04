@@ -1,5 +1,9 @@
 <p>Enter the long url and click "Shorten!"</p>
 <form>
-  <input type='text' name='url' />
-  <input type='submit' value='Shorten!' />
+  <input type='text' name='url' [(ngModel)]='urlInput' />
+  <input type='submit' value='Shorten!' (click)='shorten()' />
 </form>
+<p *ngIf="shortenedUrl != ''">
+  The shortened url is:
+  <a [href]='shortenedUrl'>{{ shortenedUrl }}</a>
+</p>

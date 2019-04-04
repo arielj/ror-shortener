@@ -1,1 +1,1 @@
-json.url @shortened.encoded_key
+json.url shortened_url(@shortened.encoded_key)
