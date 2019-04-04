@@ -13,7 +13,8 @@
 - run `bundle exec rails db:create` and `bundle exec rails db:migrate`
 
 * Database initialization
--
+- With the server runing at localhost:3000, run the script `ruby populate_database.rb`
+  It requires the gem *curb* for the CURL request.
 
 * How to run the test suite
 -
@@ -23,7 +24,6 @@
 
 * Deployment instructions
 
-* ...
 
 
 # Url shortening algorithm
