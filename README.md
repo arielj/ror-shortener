@@ -32,20 +32,20 @@ the integer record ID on the database.
 
 Using one single char we can represent numbers from 0 to 61: using number from
 0 to 9, letters from 'a' to 'z' and letters from 'A' to 'Z'. That way:
-  a (base62) == 10 (base10)
-  b (base62) == 11 (base10)
-  ...
-  B (base62) == 37 (base10)
-  ...
-  Z (base62) == 61 (base10)
+- a (base62) == 10 (base10)
+- b (base62) == 11 (base10)
+- ...
+- B (base62) == 37 (base10)
+- ...
+- Z (base62) == 61 (base10)
 
 With more chars, the maximum representable base10 integer grows exponentially:
-  1 char = 62
-  2 chars = 62^2 = 3844
-  3 chars = 62^3 = 238328
-  ...
-  6 chars = 62^6 = 56.800.235.584
-  ...
+- 1 char = 62
+- 2 chars = 62^2 = 3844
+- 3 chars = 62^3 = 238328
+- ...
+- 6 chars = 62^6 = 56.800.235.584
+- ...
 
 We can represent millons of record IDs with a fraction of the bytes if we were
 using only digits from 0 to 9.
