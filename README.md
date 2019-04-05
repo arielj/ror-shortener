@@ -52,36 +52,39 @@ using only digits from 0 to 9.
 
 Now we use that base62 encoding of the ID as the identifier of the shortened url.
 
-
+----------------------
 The algorithm consistes of 4 steps
 1 - Create a new record on the database with the provided URL so it gets an ID
 
 2 - Encode the record ID as BASE62
 
-    def self.num_to_base62(num)
-      # return '' to stop the recursive calls
-      return '' if num.nil?
+``` Ruby
+def self.num_to_base62(num)
+  # return '' to stop the recursive calls
+  return '' if num.nil?
 
-      # if the number is greater than 61, divide by 62 and save the
-      _next = (num / 62).floor unless num < 62
+  # if the number is greater than 61, divide by 62 and save the
+  _next = (num / 62).floor unless num < 62
 
-      # call this function again and concatenate the result with the char at
-      # position num % 62
-      "#{num_to_base62(_next)}#{BASE_62_DIGITS[num % 62]}"
-    end
+  # call this function again and concatenate the result with the char at
+  # position num % 62
+  "#{num_to_base62(_next)}#{BASE_62_DIGITS[num % 62]}"
+end
+```
 
 3 - Use the encoded ID as the path of the shortened url
 
 4 - Decode the BASE62 string back to an integer to query the record from the database
+``` Ruby
+def self.base62_to_num(encoded)
+  #iterate the string on reverse order and map to numbers
+  encoded.reverse.each_char.with_index.map do |c, idx|
 
-    def self.base62_to_num(encoded)
-      #iterate the string on reverse order and map to numbers
-      encoded.reverse.each_char.with_index.map do |c, idx|
+    # get the index of the char from the constant and multiply that number
+    # by 62 at the power of idx where idx is the index of the iteration
+    BASE_62_DIGITS.index(c) * (62**idx)
 
-        # get the index of the char from the constant and multiply that number
-        # by 62 at the power of idx where idx is the index of the iteration
-        BASE_62_DIGITS.index(c) * (62**idx)
-
-      # finally, sum al the numbers from the map
-      end.sum
-    end
+  # finally, sum al the numbers from the map
+  end.sum
+end
+```
