@@ -22,5 +22,9 @@ test:
   database: shortener_test
 
 production:
-  <<: *default
-  database: shortener
+  adapter: postgresql
+  host: ec2-184-72-238-22.compute-1.amazonaws.com
+  database: d4urcvupuf15lv
+  user: tpordsfrfehydn
+  port: 5432
+  password: 5a079bf0c7be42796e41e27423a22dceb86bebf0e9f748deda046041a40020f7
